@@ -8,6 +8,7 @@ public class MidiEventData {
 	private int noteOnOff;
 	private int instrument;
 
+	// TODO: This may need a JavaDoc comment.
 	public MidiEventData(int s, int v, int n, int c, int i, int nOO) {
 		this.startEndTick = s;
 		this.velocity = v;
