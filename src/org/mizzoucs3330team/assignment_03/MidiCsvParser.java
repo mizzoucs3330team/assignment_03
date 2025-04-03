@@ -8,6 +8,12 @@ import java.util.List;
 
 public class MidiCsvParser {
 
+	/**
+	 * Function called to parse csv text data into listed values
+	 * 
+	 * @param filePath path of file
+     * @return midiEvents MidiEventData List
+	 */
     public static List<MidiEventData> parseCsv(String filePath){
 
         //create list for midiEvents
