@@ -27,4 +27,27 @@ public interface MidiEventFactory {
 	 */
 	MidiEvent createNoteOff(int tick, int note, int channel) throws InvalidMidiDataException;
 
+	/**
+	 * getFactory
+	 * called to specify factory type based on Str parameter 'type'
+	 * @param type
+	 * @return Appropriate factory declaration
+	 * 
+	 * Create factory in main with:
+	 * MidiEventFactory factory = MidiEventFactory.getFactory("type")
+	 * then assign noteOn and noteOff
+	 */
+	static MidiEventFactory getFactory(String type){
+		switch(type.toLowerCase()){
+			case "staccato":
+				return new StaccatoMidEventFactory();
+			case "legato":
+				return new LegatoMidEventFactory();
+			case "standard":
+				return new StandardMidEventFactory();
+			default:
+				return new StandardMidEventFactory();
+		}
+	}
+
 }
