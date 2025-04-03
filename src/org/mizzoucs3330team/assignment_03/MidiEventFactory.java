@@ -40,13 +40,13 @@ public interface MidiEventFactory {
 	static MidiEventFactory getFactory(String type){
 		switch(type.toLowerCase()){
 			case "staccato":
-				return new StaccatoMidEventFactory();
+				return new StaccatoMidiEventFactory();
 			case "legato":
-				return new LegatoMidEventFactory();
+				return new LegatoMidiEventFactory();
 			case "standard":
-				return new StandardMidEventFactory();
+				return new StandardMidiEventFactory();
 			default:
-				return new StandardMidEventFactory();
+				return new StandardMidiEventFactory();
 		}
 	}
 
