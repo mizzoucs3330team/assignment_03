@@ -1,6 +1,5 @@
 package org.mizzoucs3330team.assignment_03;
 
-import javax.sound.midi.InvalidMidiDataException;
 import javax.sound.midi.*;
 //import javax.sound.midi.MidiEvent;
 
@@ -18,8 +17,16 @@ public class StaccatoMidiEventFactory implements MidiEventFactory {
 		int modifiedNote = (pitchStrategy != null) ? pitchStrategy.modifyPitch(note) : note;
 		ShortMessage message = new ShortMessage();
 
-		message.setMessage(message.NOTE_ON, channel, modifiedNote, 100);
+		message.setMessage(message.NOTE_ON, channel, modifiedNote, 64);
 
+		return new MidiEvent(message, tick);
+	}
+
+	public MidiEvent createNoteOn(int tick, int note, int velocity, int channel) throws InvalidMidiDataException {
+		ShortMessage message = new ShortMessage();
+
+		message.setMessage(message.NOTE_ON, channel, note, velocity);
+		
 		return new MidiEvent(message, tick);
 	}
 

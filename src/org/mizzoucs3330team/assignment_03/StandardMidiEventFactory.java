@@ -18,7 +18,15 @@ public class StandardMidiEventFactory implements MidiEventFactory {
 		int modifiedNote = (pitchStrategy != null) ? pitchStrategy.modifyPitch(note) : note;
 		ShortMessage message = new ShortMessage();
 
-		message.setMessage(message.NOTE_ON, channel, modifiedNote, 100);
+		message.setMessage(message.NOTE_ON, channel, modifiedNote, 64);
+
+		return new MidiEvent(message, tick);
+	}
+	public MidiEvent createNoteOn(int tick, int note, int channel, int velocity) throws InvalidMidiDataException {
+		int modifiedNote = (pitchStrategy != null) ? pitchStrategy.modifyPitch(note) : note;
+		ShortMessage message = new ShortMessage();
+
+		message.setMessage(message.NOTE_ON, channel, modifiedNote, velocity);
 
 		return new MidiEvent(message, tick);
 	}

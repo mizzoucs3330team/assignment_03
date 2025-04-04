@@ -1,5 +1,7 @@
 package org.mizzoucs3330team.assignment_03;
 
+import java.util.List;
+
 import javax.imageio.ImageIO;
 import javax.sound.midi.*;
 
@@ -11,41 +13,56 @@ public class Main {
 	 * @param args Arguments
 	 */
 	public static void main(String[] args) {
-		//choose facotry type
-		MidiEventFactory factory = MidiEventFactory.getFactory("staccato");
-		//MidiEventFactory factory = MidiEventFactory.getFactory("legato");
-		//MidiEventFactory factory = MidiEventFactory.getFactory("standard");
+		try{
 
-		//Set a pitch strat
-		factory.setPitchStrategy(new HigherPitchStratgey());
-
-		//declare example vars
-		int tick = 0;
-		int note = 60;
-		int channel = 0;
-
-		MidiEvent noteOn = null;
-		MidiEvent noteOff = null;
-
-		//create noteOn & noteOff
-		try {
-			noteOn = factory.createNoteOn(tick, note, channel);
-		}
-		catch (InvalidMidiDataException e){
-			e.printStackTrace();
-		}
+            //parse MIDI CSV file
+            List<MidiEventData> midiEvents = MidiCsvParser.parseCsv("./???/mysterysong.csv");
 			
-		try {
-			noteOff = factory.createNoteOff(tick, note, channel);
+            //create a sequence with resolution 384 ticks per quarter note
+            Sequence sequence = new Sequence(Sequence.PPQ, 384);
+            Track track = sequence.createTrack();
+
+			//choose Midi Event Factory type
+			MidiEventFactory factory = MidiEventFactory.getFactory("staccato");
+			//MidiEventFactory factory = MidiEventFactory.getFactory("legato");
+			//MidiEventFactory factory = MidiEventFactory.getFactory("standard");
+
+			
+			//apply instrument strat
+			//TODO
+
+			//set pitch strat
+			factory.setPitchStrategy(new HigherPitchStratgey());
+			
+            for (MidiEventData event : midiEvents) {
+
+				//TODO -- part of instrument strategy I believe
+                int modifiedNote = factory.getPitchStrategy().modifyPitch(event.getNote());
+                modifiedNote = factory.getPitchStrategy().modifyPitch(modifiedNote); // apply again if you want
+
+                if (event.getNoteOnOff() == ShortMessage.NOTE_ON) {
+                    track.add(factory.createNoteOn(event.getStartEndTick(), modifiedNote, event.getVelocity(), event.getChannel()));
+                } else {
+                    track.add(factory.createNoteOff(event.getStartEndTick(), modifiedNote, event.getChannel()));
+                }
+            }
+			
+            //set up and start the sequencer
+            Sequencer sequencer = MidiSystem.getSequencer();
+            sequencer.open();
+            sequencer.setSequence(sequence);
+            sequencer.start();
+
+            //let it play
+            while (sequencer.isRunning() || sequencer.isOpen()) {
+                Thread.sleep(100);
+            }
+
+            Thread.sleep(500);
+            sequencer.close();
 		}
-		catch (InvalidMidiDataException e){
+		catch(Exception e){
 			e.printStackTrace();
-		}
-		
-		//if try statements pass
-		if (noteOn != null && noteOff != null) {
-			System.out.println("Note ON Tick: " + noteOn.getTick());
-			System.out.println("Note OFF Tick: " + noteOff.getTick());
 		}
 	}
 }

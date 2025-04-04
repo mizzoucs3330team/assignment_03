@@ -15,6 +15,7 @@ public interface MidiEventFactory {
 	 * @throws InvalidMidiDataException
 	 */
 	MidiEvent createNoteOn(int tick, int note, int channel) throws InvalidMidiDataException;
+	MidiEvent createNoteOn(int tick, int note, int channel, int velocity) throws InvalidMidiDataException;
 
 	// TODO: Fill out this JavaDoc.
 	/**
