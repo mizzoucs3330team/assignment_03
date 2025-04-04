@@ -27,6 +27,8 @@ public interface MidiEventFactory {
 	 */
 	MidiEvent createNoteOff(int tick, int note, int channel) throws InvalidMidiDataException;
 
+	void setPitchStrategy(PitchStrategy strategy);
+
 	/**
 	 * getFactory
 	 * called to specify factory type based on Str parameter 'type'
@@ -49,5 +51,4 @@ public interface MidiEventFactory {
 				return new StandardMidiEventFactory();
 		}
 	}
-
 }
