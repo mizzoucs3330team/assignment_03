@@ -16,5 +16,4 @@ public class LegatoMidiEventFactory implements MidiEventFactory {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 }
