@@ -20,7 +20,7 @@ that still need to be done.
 	- [x] Abstract Factory Pattern
 		- [x] Interfaces -- Clayton
 		- [x] Implementations -- Evan
-- [x] Pitch Strategy
+- [x] Pitch Strategies
 	- [x] Interface -- Clayton
 	- [x] Implementations -- Clayton
 - [x] Instrument Strategies
