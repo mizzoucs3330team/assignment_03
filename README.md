@@ -16,13 +16,17 @@ that still need to be done.
 
 - [x] Skeleton Project Out -- Clayton
 - [x] CSV Parser (MidiCsvParser) -- Evan
-- [ ] Abstract Factory Pattern
-	- [x] Interfaces -- Clayton
-	- [ ] Implementations
-- [ ] Legato and Staccato Behavior
-- [ ] Pitch Strategy
-- [ ] Instrument Strategies
-- [ ] Main
-- [ ] Ensure all functions have JavaDoc comments
+- [x] Legato and Staccato Behavior
+	- [x] Abstract Factory Pattern
+		- [x] Interfaces -- Clayton
+		- [x] Implementations -- Evan
+- [x] Pitch Strategy
+	- [x] Interface -- Clayton
+	- [x] Implementations -- Clayton
+- [x] Instrument Strategies
+	- [x] Interface -- Clayton
+	- [x] Implementations -- Clayton
+- [ ] Main -- Evan
+- [ ] Ensure all functions have JavaDoc comments -- Clayton
 
 
