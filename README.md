@@ -15,7 +15,7 @@ Please log things that you have done here so that we can more quickly get starte
 that still need to be done.
 
 - [x] Skeleton Project Out -- Clayton
-- [ ] CSV Parser (MidiCsvParser)
+- [x] CSV Parser (MidiCsvParser) -- Evan
 - [ ] Abstract Factory Pattern
 	- [x] Interfaces -- Clayton
 	- [ ] Implementations
