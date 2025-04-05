@@ -27,7 +27,7 @@ that still need to be done.
 	- [x] Interface -- Clayton
 	- [x] Implementations -- Clayton
 - [ ] Main -- Evan
-- [ ] Ensure all functions have JavaDoc comments -- Clayton
-- [ ] Package out concerns
+- [ ] Ensure all functions have JavaDoc comments -- Clayton, Evan
+- [ ] Package out concerns -- Clayton
 
 
