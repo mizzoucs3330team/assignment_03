@@ -14,13 +14,13 @@ contains a link to [a relevant webpage](https://refactoring.guru/design-patterns
 Please log things that you have done here so that we can more quickly get started on things
 that still need to be done.
 
-[x] Skeleton Project Out -- Clayton
-[ ] CSV Parser (MidiCsvParser)
-[ ] Abstract Factory Pattern
-	[x] Interfaces
-	[ ] Implementations
-[ ] Legato and Staccato Behavior
-[ ] Pitch Strategy
-[ ] Instrument Strategies
-[ ] Main
+- [x] Skeleton Project Out -- Clayton
+- [ ] CSV Parser (MidiCsvParser)
+- [ ] Abstract Factory Pattern
+	- [x] Interfaces
+	- [ ] Implementations
+- [ ] Legato and Staccato Behavior
+- [ ] Pitch Strategy
+- [ ] Instrument Strategies
+- [ ] Main
 
