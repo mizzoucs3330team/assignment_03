@@ -14,7 +14,6 @@ public class TrumpetStrategy implements InstrumentStrategy {
 			ShortMessage msg = new ShortMessage(ShortMessage.PROGRAM_CHANGE, channel, NUM, 0);
 			track.add(new MidiEvent(msg, 0));
 		} catch (InvalidMidiDataException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

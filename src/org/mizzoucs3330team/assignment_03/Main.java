@@ -23,29 +23,33 @@ public class Main {
 			Sequence sequence = new Sequence(Sequence.PPQ, 384);
 			Track track = sequence.createTrack();
 
-			final MidiEventFactoryAbstract factoryAbstract = new StandardMidiEventFactoryAbstract();
+//			final MidiEventFactoryAbstract factoryAbstract = new StandardMidiEventFactoryAbstract();
 //			final MidiEventFactoryAbstract factoryAbstract = new LegatoMidiEventFactoryAbstract();
-//			final MidiEventFactoryAbstract factoryAbstract = new StaccatoMidiEventFactoryAbstract();
+			final MidiEventFactoryAbstract factoryAbstract = new StaccatoMidiEventFactoryAbstract();
 
 			MidiEventFactory factory = factoryAbstract.createFactory();
 
 			final InstrumentStrategy electricBassGuitarStrategy = new ElectricBassGuitarStrategy();
 			final InstrumentStrategy trumpetStrategy = new TrumpetStrategy();
-//			final InstrumentStrategy acousticGrandPianoStrategy = new AcousticGrandPianoStrategy();
+			final InstrumentStrategy acousticGrandPianoStrategy = new AcousticGrandPianoStrategy();
 			electricBassGuitarStrategy.applyInstrument(track, 0);
 			trumpetStrategy.applyInstrument(track, 1);
+//			acousticGrandPianoStrategy.applyInstrument(track, 2);
+//			acousticGrandPianoStrategy.applyInstrument(track, 3);
+//			acousticGrandPianoStrategy.applyInstrument(track, 4);
 
 			PitchStrategy pitchStrategy = new HigherPitchStrategy();
-			// PitchStrategy pitchStrategy = new LowerPitchStrategy();
+//			PitchStrategy pitchStrategy = new LowerPitchStrategy();
 
 			for (MidiEventData event : midiEvents) {
-				final int modifiedNote = pitchStrategy.modifyPitch(event.getNote());
+//				final int note = event.getNote();
+				final int note = pitchStrategy.modifyPitch(event.getNote());
 
 				if (event.getNoteOnOff() == ShortMessage.NOTE_ON) {
-					track.add(factory.createNoteOn(event.getStartEndTick(), modifiedNote, event.getVelocity(),
+					track.add(factory.createNoteOn(event.getStartEndTick(), note, event.getVelocity(),
 							event.getChannel()));
 				} else {
-					track.add(factory.createNoteOff(event.getStartEndTick(), modifiedNote, event.getChannel()));
+					track.add(factory.createNoteOff(event.getStartEndTick(), note, event.getChannel()));
 				}
 			}
 
@@ -56,8 +60,14 @@ public class Main {
 
 			// Let the sequencer play.
 			while (sequencer.isRunning()) {
-				System.out.println("Sequencer is running...");
-				Thread.sleep(100);
+				System.out.print("Sequencer is running");
+				Thread.sleep(1000);
+				System.out.print(".");
+				Thread.sleep(1000);
+				System.out.print(".");
+				Thread.sleep(1000);
+				System.out.print(".");
+				System.out.println();
 			}
 			System.out.println("Sequencer is finished.");
 			Thread.sleep(500);
