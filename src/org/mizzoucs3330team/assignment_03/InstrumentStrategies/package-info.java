@@ -1,1 +1,1 @@
-package org.mizzoucs3330team.assignment_03.InstrumentStrategies;
+package org.mizzoucs3330team.assignment_03.instrumentStrategies;

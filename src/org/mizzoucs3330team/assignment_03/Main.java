@@ -8,10 +8,12 @@ import javax.sound.midi.Sequencer;
 import javax.sound.midi.ShortMessage;
 import javax.sound.midi.Track;
 
-import org.mizzoucs3330team.assignment_03.InstrumentStrategies.AcousticGrandPianoStrategy;
-import org.mizzoucs3330team.assignment_03.InstrumentStrategies.ElectricBassGuitarStrategy;
-import org.mizzoucs3330team.assignment_03.InstrumentStrategies.InstrumentStrategy;
-import org.mizzoucs3330team.assignment_03.InstrumentStrategies.TrumpetStrategy;
+import org.mizzoucs3330team.assignment_03.instrumentStrategies.AcousticGrandPianoStrategy;
+import org.mizzoucs3330team.assignment_03.instrumentStrategies.ElectricBassGuitarStrategy;
+import org.mizzoucs3330team.assignment_03.instrumentStrategies.InstrumentStrategy;
+import org.mizzoucs3330team.assignment_03.instrumentStrategies.TrumpetStrategy;
+import org.mizzoucs3330team.assignment_03.pitchStrategies.HigherPitchStrategy;
+import org.mizzoucs3330team.assignment_03.pitchStrategies.PitchStrategy;
 
 public class Main {
 

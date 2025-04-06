@@ -1,4 +1,4 @@
-package org.mizzoucs3330team.assignment_03;
+package org.mizzoucs3330team.assignment_03.pitchStrategies;
 
 public class LowerPitchStrategy implements PitchStrategy {
 
