@@ -1,4 +1,4 @@
-package org.mizzoucs3330team.assignment_03;
+package org.mizzoucs3330team.assignment_03.InstrumentStrategies;
 
 import javax.sound.midi.InvalidMidiDataException;
 import javax.sound.midi.MidiEvent;

@@ -8,6 +8,11 @@ import javax.sound.midi.Sequencer;
 import javax.sound.midi.ShortMessage;
 import javax.sound.midi.Track;
 
+import org.mizzoucs3330team.assignment_03.InstrumentStrategies.AcousticGrandPianoStrategy;
+import org.mizzoucs3330team.assignment_03.InstrumentStrategies.ElectricBassGuitarStrategy;
+import org.mizzoucs3330team.assignment_03.InstrumentStrategies.InstrumentStrategy;
+import org.mizzoucs3330team.assignment_03.InstrumentStrategies.TrumpetStrategy;
+
 public class Main {
 
 	/**
@@ -33,7 +38,6 @@ public class Main {
 			final InstrumentStrategy trumpetStrategy = new TrumpetStrategy();
 			final InstrumentStrategy acousticGrandPianoStrategy = new AcousticGrandPianoStrategy();
 			electricBassGuitarStrategy.applyInstrument(track, 0);
-			trumpetStrategy.applyInstrument(track, 1);
 //			acousticGrandPianoStrategy.applyInstrument(track, 2);
 //			acousticGrandPianoStrategy.applyInstrument(track, 3);
 //			acousticGrandPianoStrategy.applyInstrument(track, 4);
