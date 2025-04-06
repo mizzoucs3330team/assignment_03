@@ -30,7 +30,7 @@ that still need to be done.
 - [x] Ensure all functions have JavaDoc comments -- Clayton
 - [x] Package out concerns -- Clayton
 
-# The Identity of the Mystery Song
+## The Identity of the Mystery Song
 
 The mystery song is "bad guy" by Billie Eilish.
 
