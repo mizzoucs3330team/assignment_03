@@ -18,29 +18,28 @@ public class Main {
 	public static void main(String[] args) {
 		try {
 
-			// parse MIDI CSV file
-			List<MidiEventData> midiEvents = MidiCsvParser.parseCsv("./???/mystery_song.csv");
-
-			// create a sequence with resolution 384 ticks per quarter note
+			// Parse MIDI CSV file
+			List<MidiEventData> midiEvents = MidiCsvParser.parseCsv("./mystery_song.csv");
 			Sequence sequence = new Sequence(Sequence.PPQ, 384);
 			Track track = sequence.createTrack();
 
-			// choose Midi Event Factory type
-			MidiEventFactory factory = MidiEventFactory.getFactory("staccato");
-			// MidiEventFactory factory = MidiEventFactory.getFactory("legato");
-			// MidiEventFactory factory = MidiEventFactory.getFactory("standard");
+			final MidiEventFactoryAbstract factoryAbstract = new StandardMidiEventFactoryAbstract();
+//			final MidiEventFactoryAbstract factoryAbstract = new LegatoMidiEventFactoryAbstract();
+//			final MidiEventFactoryAbstract factoryAbstract = new StaccatoMidiEventFactoryAbstract();
 
-			// apply instrument strat
-			// TODO
+			MidiEventFactory factory = factoryAbstract.createFactory();
 
-			// set pitch strat
-			factory.setPitchStrategy(new HigherPitchStratgey());
+			final InstrumentStrategy electricBassGuitarStrategy = new ElectricBassGuitarStrategy();
+			final InstrumentStrategy trumpetStrategy = new TrumpetStrategy();
+//			final InstrumentStrategy acousticGrandPianoStrategy = new AcousticGrandPianoStrategy();
+			electricBassGuitarStrategy.applyInstrument(track, 0);
+			trumpetStrategy.applyInstrument(track, 1);
+
+			PitchStrategy pitchStrategy = new HigherPitchStrategy();
+			// PitchStrategy pitchStrategy = new LowerPitchStrategy();
 
 			for (MidiEventData event : midiEvents) {
-
-				// TODO -- part of instrument strategy I believe
-				int modifiedNote = factory.getPitchStrategy().modifyPitch(event.getNote());
-				modifiedNote = factory.getPitchStrategy().modifyPitch(modifiedNote); // apply again if you want
+				final int modifiedNote = pitchStrategy.modifyPitch(event.getNote());
 
 				if (event.getNoteOnOff() == ShortMessage.NOTE_ON) {
 					track.add(factory.createNoteOn(event.getStartEndTick(), modifiedNote, event.getVelocity(),
@@ -50,19 +49,20 @@ public class Main {
 				}
 			}
 
-			// set up and start the sequencer
 			Sequencer sequencer = MidiSystem.getSequencer();
 			sequencer.open();
 			sequencer.setSequence(sequence);
 			sequencer.start();
 
-			// let it play
-			while (sequencer.isRunning() || sequencer.isOpen()) {
+			// Let the sequencer play.
+			while (sequencer.isRunning()) {
+				System.out.println("Sequencer is running...");
 				Thread.sleep(100);
 			}
-
+			System.out.println("Sequencer is finished.");
 			Thread.sleep(500);
 			sequencer.close();
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -6,13 +6,15 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.sound.midi.ShortMessage;
+
 public class MidiCsvParser {
 
 	/**
 	 * Parse CSV text data into listed values.
 	 * 
-	 * @param filePath The path of the file to be parsed.
-	 * @return midiEvents MidiEventData List
+	 * @param filePath The path of the file.
+	 * @return midiEvents List of MidiEventData
 	 */
 	public static List<MidiEventData> parseCsv(String filePath) {
 
@@ -21,27 +23,23 @@ public class MidiCsvParser {
 
 		try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
 
-			// create line and read it
 			String line;
 			while ((line = br.readLine()) != null) {
+				String[] values = line.trim().replaceAll(" ", "").split(",");
 
-				// identify each value separated by commas
-				String[] values = line.split(",");
-
-				// reject if too little or too many values (excludable)
 				if (values.length != 6) {
-					System.out.println("Invalid Line: " + line);
+					System.out.println("Invalid Line -- Too Many Values: " + line);
 					continue;
 				}
 
 				try {
 					// assign vars for event from line read
-					int startEndTick = Integer.parseInt(values[0].trim());
-					int velocity = Integer.parseInt(values[1].trim());
-					int note = Integer.parseInt(values[2].trim());
-					int channel = Integer.parseInt(values[3].trim());
-					int instrument = Integer.parseInt(values[4].trim());
-					int noteOnOff = Integer.parseInt(values[5].trim());
+					int startEndTick = Integer.parseInt(values[0]);
+					int noteOnOff = values[1].equals("Note_on_c") ? ShortMessage.NOTE_ON : ShortMessage.NOTE_OFF;
+					int channel = Integer.parseInt(values[2]);
+					int note = Integer.parseInt(values[3]);
+					int velocity = Integer.parseInt(values[4]);
+					int instrument = Integer.parseInt(values[5]);
 
 					// create event
 					MidiEventData event = new MidiEventData(startEndTick, velocity, note, channel, instrument,
@@ -52,7 +50,9 @@ public class MidiCsvParser {
 				} catch (NumberFormatException e) {
 					System.out.println("Invalid number format: " + line);
 				}
+
 			}
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
