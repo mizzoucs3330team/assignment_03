@@ -5,25 +5,27 @@ import javax.sound.midi.MidiEvent;
 
 public interface MidiEventFactory {
 
-	// TODO: Fill out this JavaDoc.
 	/**
+	 * Create a NoteOn MidiEvent.
 	 * 
-	 * @param tick
-	 * @param note
-	 * @param velocity
-	 * @param channel
+	 * @param tick     The tick the note begins at.
+	 * @param note     The pitch of the note.
+	 * @param velocity The velocity of the note.
+	 * @param channel  The channel to be played on.
+	 * 
 	 * @return Returns the MidiEvent.
 	 * @throws InvalidMidiDataException
 	 */
 	MidiEvent createNoteOn(int tick, int note, int velocity, int channel) throws InvalidMidiDataException;
 
-	// TODO: Fill out this JavaDoc.
 	/**
+	 * Create a NoteOff MidiEvent.
 	 * 
-	 * @param tick
-	 * @param note
-	 * @param channel
-	 * @return
+	 * @param tick    The tick the note stops at.
+	 * @param note    The pitch of the note.
+	 * @param channel The channel of the note.
+	 * 
+	 * @return Returns the MidiEvent.
 	 * @throws InvalidMidiDataException
 	 */
 	MidiEvent createNoteOff(int tick, int note, int channel) throws InvalidMidiDataException;

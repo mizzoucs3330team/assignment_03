@@ -4,6 +4,10 @@ public class LowerPitchStrategy implements PitchStrategy {
 
 	/**
 	 * Lower a note's pitch by two semitones.
+	 * 
+	 * @param The note to be modified.
+	 * 
+	 * @return Returns the lowered note.
 	 */
 	@Override
 	public int modifyPitch(int note) {

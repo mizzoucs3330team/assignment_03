@@ -4,11 +4,11 @@ import javax.sound.midi.Track;
 
 public interface InstrumentStrategy {
 
-	// TODO: Fill this out.
 	/**
+	 * Apply an instrument to a channel.
 	 * 
-	 * @param track
-	 * @param channel
+	 * @param track   The track.
+	 * @param channel The channel to apply the instrument to.
 	 */
 	void applyInstrument(Track track, int channel);
 
