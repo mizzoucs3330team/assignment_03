@@ -15,19 +15,19 @@ Please log things that you have done here so that we can more quickly get starte
 that still need to be done.
 
 - [x] Skeleton Project Out -- Clayton
-- [x] CSV Parser (MidiCsvParser) -- Evan
+- [x] CSV Parser (MidiCsvParser) -- Clayton, Evan
 - [x] Legato and Staccato Behavior
 	- [x] Abstract Factory Pattern
 		- [x] Interfaces -- Clayton
-		- [x] Implementations -- Evan
+		- [x] Implementations -- Clayton, Evan
 - [x] Pitch Strategies
 	- [x] Interface -- Clayton
 	- [x] Implementations -- Clayton
 - [x] Instrument Strategies
 	- [x] Interface -- Clayton
 	- [x] Implementations -- Clayton
-- [ ] Main -- Evan
-- [ ] Ensure all functions have JavaDoc comments -- Clayton, Evan
-- [ ] Package out concerns -- Clayton
+- [x] Main -- Clayton
+- [x] Ensure all functions have JavaDoc comments -- Clayton
+- [x] Package out concerns -- Clayton
 
 
