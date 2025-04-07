@@ -79,6 +79,8 @@ public class Main {
 			Thread.sleep(500);
 			sequencer.close();
 
+			System.out.println("The song was \"bad guy\" by Billie Eilish.");
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
